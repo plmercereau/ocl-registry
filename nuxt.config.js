@@ -1,8 +1,17 @@
 const pkg = require('./package')
 
+// https://fr.nuxtjs.org/faq/github-pages
+// ajouter seulement `router.base = '/<nom-du-depot>/'` si `DEPLOY_ENV` est `GH_PAGES`
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/ocl-registry/'
+  }
+} : {}
+
 module.exports = {
   mode: 'universal',
 
+  ...routerBase,
   /*
   ** Headers of the page
   */
